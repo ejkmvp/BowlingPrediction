@@ -10,7 +10,7 @@ The models output a single number between 0 and 1 that, when multiplied by 300, 
 ## Data Collection
 About 220,000 bowling games have been collected, with most coming from "average" league bowlers on mostly house shot. As such, this model may not perform well with professionals on non-house shots.
 
-Data was collected from LaneTalk's API. LaneTalk is a popular software suite used by bowling alleys to digitize scoring in real-time. A core feature of LaneTalk is the ability to setup matches. Bowlers can create and joing matches and compete against other bowlers in the same match. All match data is stored and accessible via the API. For whatever reason, Lanetalk decided to use sequential match IDs for data queries, so scraping the LaneTalk match data was trivial. Files pertaining to data collection can be found in the collection folder.
+Data was collected from LaneTalk's API. LaneTalk is a popular software suite used by bowling alleys to digitize scoring in real-time. A core feature of LaneTalk is the ability to setup matches. Bowlers can create and joing matches and compete against other bowlers in the same match. All match data is stored and accessible via the API. For whatever reason, Lanetalk decided to use sequential match IDs for data queries, so scraping the LaneTalk match data was trivial. Files pertaining to data collection can be found in the collection folder. NOTE: These Python scripts are outdated as of now. I did a lot of work on another OS that ended up corrupted, so updated scripts were lost.
 
 LaneTalk also collects significant data on professionals, so in the future, I would like to train another set of models based on their performance
 
