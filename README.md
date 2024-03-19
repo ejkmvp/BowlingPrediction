@@ -30,6 +30,9 @@ inputArray = numpy.array(game).reshape(1, 120)
 model.predict(inputArray)
 ```
 
+## Accuracy
+It's kinda accurate :). I don't have a whole lot of empirical data collected yet but when trained on the first 6 frames, it guessed within 10 pins of the correct score a bit under 40% of the time on a sample 500 games.
+
 ## Goals
 
 - Make some sort of web app out of this.
