@@ -1,9 +1,9 @@
 import json
 import csv
 
-import keras
-from keras import tensorflow
-keras.Model(
+#import keras
+#from keras import tensorflow
+#keras.Model(
 
 f = open("scoreCardAll.json", "r")
 jsonData = json.load(f)
@@ -12,7 +12,7 @@ f.close()
 print("loaded JSON data")
 
 fields = []
-for x in range(12):
+for x in range(20):
     for y in range(10):
         fields.append("throw" + str(x) + "-" + str(y))
 fields.append("finalScore")
@@ -25,13 +25,13 @@ writer.writerow(fields)
 gameCounter = 0
 wrongCounter = 0
 for game in jsonData:
-    temp = []
+    temp = []   
     if (len(game["pins"]) != 21 and len(game["pins"]) != 20) or ("total" not in game.keys()):
         print(len(game["pins"]))
         print("found wrong game")
         wrongCounter += 1
         continue
-    for x in range(12):
+    for x in range(20):
 
         if not game["pins"][x]:
             game["pins"][x] = 0
