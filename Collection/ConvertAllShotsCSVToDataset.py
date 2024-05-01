@@ -1,6 +1,8 @@
 import csv
 import random
 
+TEST_SAMPLE_SIZE = 1000
+
 g = open("ScoreDetailDataset.txt", "wb")
 h = open("ScoreDetailDatasetVSplit.txt", "wb")
 
@@ -15,10 +17,9 @@ for line in reader:
         lineCount += 1
         if not lineCount % 200000:
             print(lineCount)
-# generate selection array. NOTE - this was originally for making a seperate verification set but I decided not to use it
+# generate selection array.
 selectionArray = [0] * lineCount
-"""
-for x in range(int(lineCount * .2)):
+for x in range(int(TEST_SAMPLE_SIZE)):
     while True:
         selec = random.randint(0, lineCount - 1)
         if selectionArray[selec] == 0:
@@ -26,8 +27,8 @@ for x in range(int(lineCount * .2)):
             selectionArray[selec] = 1
             break
 print("finished generating selection array")
-assert(sum(selectionArray) == int(.2 * lineCount))
-"""
+assert(sum(selectionArray) == int(TEST_SAMPLE_SIZE))
+
 
 f.close()
 f = open("ScoreDetailAllShots.csv", "r")
