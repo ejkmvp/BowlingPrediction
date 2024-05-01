@@ -1,3 +1,4 @@
+
 # Bowling Score Prediction with Keras
 
 ## Design
@@ -8,11 +9,14 @@ The models take each pin as a binary input, where a 1 represents the pin standin
 The models output a single number between 0 and 1 that, when multiplied by 300, represents the expected final score. 
 
 ## Data Collection
-About 220,000 bowling games have been collected, with most coming from "average" league bowlers on mostly house shot. As such, this model may not perform well with professionals on non-house shots.
+About 8,000,000 bowling games have been collected with no regards to bowling skill level.
 
-Data was collected from LaneTalk's API. LaneTalk is a popular software suite used by bowling alleys to digitize scoring in real-time. A core feature of LaneTalk is the ability to setup matches. Bowlers can create and joing matches and compete against other bowlers in the same match. All match data is stored and accessible via the API. For whatever reason, Lanetalk decided to use sequential match IDs for data queries, so scraping the LaneTalk match data was trivial. Files pertaining to data collection can be found in the collection folder. NOTE: These Python scripts are outdated as of now. I did a lot of work on another OS that ended up corrupted, so updated scripts were lost.
+Data was collected from LaneTalk's API. LaneTalk is a popular software suite used by bowling alleys to digitize scoring in real-time. Previously, this data was harvested from LaneTalk's matches feature. Some scripts have been included under the Collection folder. 
+```GetGamesInformation.py``` - Extract game information from a list of Game IDs from LaneTalk
+```ScoreDetailGetAllShots.py``` - Extracts completed game pin configurations and final scores into a CSV
+```ConvertAllShotsCSVToDataset.py``` - Converts the CSV data into a more efficient format for trainings
 
-LaneTalk also collects significant data on professionals, so in the future, I would like to train another set of models based on their performance
+LaneTalk also collects significant data on professionals, so in the future, I would like to train another set of models based on their performance.
 
 ## Usage
 As of now, there isnt really a frontend to the models. Instead, each model will have to loaded with Keras in a python environment. Then, a  $1$ x $(10*x)$ numpy array must be constructured for input. Note that the "LSB of each shot" (the first input) represents the 1-pin. 
