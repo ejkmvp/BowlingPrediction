@@ -16,7 +16,8 @@ Data was collected from LaneTalk's API. LaneTalk is a popular software suite use
 ```ScoreDetailGetAllShots.py``` - Extracts completed game pin configurations and final scores into a CSV  
 ```ConvertAllShotsCSVToDataset.py``` - Converts the CSV data into a more efficient format for training  
 
-Of the 8,000,000+ games collected, only about 6,200,000 were fully completed games, had no edited frames, and were valid (pin counts properly added up to final score). Unfortunately, this may add some bias to the model. Houses with error-prone pin machines or slick pin decks may not be fully represented in the dataset, which could bring about some bias.
+Of the 8,000,000+ games collected, only about 3,800,000 were fully completed games, had no edited frames, and were valid (pin counts properly added up to final score and pins didnt magically appear on the second shot). Unfortunately, this may add some bias to the model. Houses with error-prone pin machines or slick pin decks may not be fully represented in the dataset, which could bring about some bias.
+Side-note: I'm a little concerned about how low this number is, and it makes me wonder if valid games are accidentally being discarded.
 
 LaneTalk also collects significant data on professionals, so in the future, I would like to train another set of models based on their performance.
 
