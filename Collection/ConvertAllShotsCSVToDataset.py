@@ -39,7 +39,7 @@ lineCounter = 0
 for line in reader:
     if len(line) == 0:
         continue
-    if len(line) != 201:
+    if len(line) != 211:
         print("incorrect length!", str(len(line)))
     lineCounter += 1
     if not lineCounter % 10000:
@@ -49,7 +49,7 @@ for line in reader:
     for x in range(25):
         temp += int("".join(line[8*x:8*x+8]), 2).to_bytes(1, "little")
     # now we need two bytes to represent the final score
-    temp += int(line[200]).to_bytes(2, "little")
+    temp += int(line[210]).to_bytes(2, "little")
     if selectionArray[lineCounter - 1]:
         h.write(temp)
     else:
