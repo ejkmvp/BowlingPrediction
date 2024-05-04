@@ -9,12 +9,15 @@ The models take each pin as a binary input, where a 1 represents the pin standin
 The models output a single number between 0 and 1 that, when multiplied by 300, represents the expected final score. 
 
 ## Data Collection
-About 8,000,000 bowling games have been collected with no regards to bowling skill level.
+About 8,000,000+ bowling games have been collected with no regards to bowling skill level.
 
 Data was collected from LaneTalk's API. LaneTalk is a popular software suite used by bowling alleys to digitize scoring in real-time. Previously, this data was harvested from LaneTalk's matches feature. Some scripts have been included under the Collection folder.  
 ```GetGamesInformation.py``` - Extract game information from a list of Game IDs from LaneTalk  
 ```ScoreDetailGetAllShots.py``` - Extracts completed game pin configurations and final scores into a CSV  
 ```ConvertAllShotsCSVToDataset.py``` - Converts the CSV data into a more efficient format for training  
+
+Of the 8,000,000+ games collected, only about 3,800,000 were fully completed games, had no edited frames, and were valid (pin counts properly added up to final score and pins didnt magically appear on the second shot). Unfortunately, this may add some bias to the model. Houses with error-prone pin machines or slick pin decks may not be fully represented in the dataset, which could bring about some bias.
+Side-note: I'm a little concerned about how low this number is, and it makes me wonder if valid games are accidentally being discarded.
 
 LaneTalk also collects significant data on professionals, so in the future, I would like to train another set of models based on their performance.
 
