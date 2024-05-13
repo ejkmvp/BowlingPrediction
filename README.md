@@ -40,7 +40,8 @@ model.predict(inputArray)
 ```
 
 ## Accuracy
-It's kinda accurate :). I don't have a whole lot of empirical data collected yet but when trained on the first 6 frames, it guessed within 10 pins of the correct score a bit under 40% of the time on a sample 500 games.
+It's kinda accurate :). I don't have a whole lot of empirical data collected yet but when trained on the first 6 frames, it guessed within 10 pins of the correct score a bit under 40% of the time on a sample 500 games.  
+
 The pytorch model based on the first 6 frames has an R^2 of 0.72 on a separate test dataset, which is much better than a multiple linear regression model which had an R^2 of around 0.4
 
 ## Goals
