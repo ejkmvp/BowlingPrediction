@@ -1,8 +1,8 @@
 
-# Bowling Score Prediction with Keras
+# Bowling Score Prediction with Keras and Pytorch
 
 ## Design
-Keras' Functional API was used to design the models. 
+Keras' Functional API was used to design the models. Later on, I tinkered with Pytorch to try to get a better model
 
 The models take each pin as a binary input, where a 1 represents the pin standing after a shot, and a 0 represents the opposite. There are $10 * x$ inputs to each model, where x represents the number of shots being accounted for.
 
@@ -19,9 +19,11 @@ Data was collected from LaneTalk's API. LaneTalk is a popular software suite use
 Of the 8,000,000+ games collected, only about 3,800,000 were fully completed games, had no edited frames, and were valid (pin counts properly added up to final score and pins didnt magically appear on the second shot). Unfortunately, this may add some bias to the model. Houses with error-prone pin machines or slick pin decks may not be fully represented in the dataset, which could bring about some bias.
 Side-note: I'm a little concerned about how low this number is, and it makes me wonder if valid games are accidentally being discarded.
 
+For the pytorch model, I wanted all the data to be loaded into the GPU so I further sorted it down to about 1.1 million games by removing all games that scored below 150. This makes the model best suited for leagues or tournaments.
+
 LaneTalk also collects significant data on professionals, so in the future, I would like to train another set of models based on their performance.
 
-## Usage
+## Usage (Keras)
 As of now, there isnt really a frontend to the models. Instead, each model will have to loaded with Keras in a python environment. Then, a  $1$ x $(10*x)$ numpy array must be constructured for input. Note that the "LSB of each shot" (the first input) represents the 1-pin. 
 ```
 game = 	       [0, 0, 0, 0, 0, 0, 0, 0, 0, 1,	//10 Pin Left
@@ -39,6 +41,7 @@ model.predict(inputArray)
 
 ## Accuracy
 It's kinda accurate :). I don't have a whole lot of empirical data collected yet but when trained on the first 6 frames, it guessed within 10 pins of the correct score a bit under 40% of the time on a sample 500 games.
+The pytorch model based on the first 6 frames has an R^2 of 0.72 on a separate test dataset, which is much better than a multiple linear regression model which had an R^2 of around 0.4
 
 ## Goals
 
